@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora AREM</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</head>
+
+<style>
+</style>
+
+<body>
+    <div class="row">
+        <div class="col-4 offset-4">
+            <form id="calcForm" method="post">
+                <div class="form-group">
+                    <input name="numbers" class="form-control" id="numbers" 
+                        placeholder="Ingrese el numero que desea elevar al cuadrado"></input>
+                </div>
+                <button id="mean" class="btn btn-outline-primary">Potencia</button>
+            </form>
+            <h3 id="result" style="display: none"></h3>
+        </div>
+    </div>
+</body>
+
+<script>
+    $('#mean').click(function (e) {
+        e.preventDefault()
+        var nums = $("#numbers").val()
+        $.ajax({
+            url: "square",
+            type: $('#calcForm').attr('method'),
+            data: { numbers: nums },
+            success: function (e) { $("#result").show(); $("#result").text(e) },
+            error: function (e) { alert("no funciono ):") }
+        });
+    });
+
+</script>
+
+</html>
